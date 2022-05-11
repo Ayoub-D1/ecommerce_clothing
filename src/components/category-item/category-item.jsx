@@ -12,7 +12,7 @@ export default function CategoryItem(props) {
       />
       <figcaption className="category-container--info">
         <h2>{title}</h2>
-        <h2>Shop Now</h2>
+        <p>Shop Now</p>
       </figcaption>
     </figure>
   );
