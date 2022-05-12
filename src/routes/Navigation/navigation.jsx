@@ -20,7 +20,7 @@ export default function Navigation() {
             <Link to="">Test 2</Link>
           </li>
           <li className="nav-link">
-            <Link to="/sign-in">Sign in</Link>
+            <Link to="/auth">Sign in</Link>
           </li>
         </ul>
       </nav>

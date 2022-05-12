@@ -10,7 +10,7 @@ const Button = ({ children, buttonType, ...otherProps }) => {
   return (
     <button
       className={`button-container ${buttonTypeClass}`}
-      type="submit"
+      type={`${otherProps.type ?? "submit"}`}
       {...otherProps}
     >
       {children}

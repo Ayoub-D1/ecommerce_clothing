@@ -9,6 +9,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import { SingupForm } from "../../components/signup/singup-form";
 import Button from "../../components/button/button.component";
+import SignInForm from "../../components/signin/singin-form";
 
 export default function SignIn() {
   // // THis is to showcase how to use sign in with redirect which deals with the issue that when redirected back from the
@@ -31,12 +32,13 @@ export default function SignIn() {
   return (
     <div>
       <h1>Sign in page</h1>
-      <Button buttonType={"google"} onClick={logGoogleUser}>
+      {/* <Button buttonType={"google"} onClick={logGoogleUser}>
         Sign in with google pop up
-      </Button>
+      </Button> */}
       {/* <Button buttonType={"google"} onClick={signInWithGoogleRedirect}>
         Sign in with google redirect
       </Button> */}
+      <SignInForm />
       <SingupForm />
     </div>
   );
