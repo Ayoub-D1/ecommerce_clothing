@@ -4,10 +4,10 @@ import {
   signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-import { createPortal } from "react-dom";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -29,10 +29,13 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGoogleRedirect = () =>
+  signInWithRedirect(auth, provider);
 
 export const db = getFirestore();
 
 export const createUserDocumentFromAuth = async userAuth => {
+  if (!userAuth) return;
   // Create a document reference (it's like a virtual document)
   const userDocRef = doc(db, "users", userAuth.uid);
   // Get the virtual document snapshot
@@ -51,4 +54,22 @@ export const createUserDocumentFromAuth = async userAuth => {
     }
   }
   return userDocRef;
+};
+
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+
+  return createUserWithEmailAndPassword(auth, email, password);
+
+  // const { displayName: name, email, password, confirmPassword } = userInfo;
+  // Generate unique identifier
+  // let uid;
+  // // Get the document reference
+  // const userDocRef = doc(db, "users", uid);
+  // // Get document snapshot
+  // const userSnapshot = await getDoc(userDocRef);
+  // if (!userSnapshot.exists()) {
+  //   // Create user
+  //   await setDoc(userDocRef, { name, email });
+  // }
 };
